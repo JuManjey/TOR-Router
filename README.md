@@ -41,29 +41,3 @@ Type "N" when asked - "Are you using a rtl871x chipset?"
 Type "N" for chromecast support (unless you plan to use a chromecast w/RasTor)
 
 **If you have the: "Failed to start hostapd.service: Unit hostapd.service is masked."**
-
-sudo systemctl unmask hostapd
-
-sudo systemctl enable hostapd
-
-sudo systemctl start hostapd
-
-reboot
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
