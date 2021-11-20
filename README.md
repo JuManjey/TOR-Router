@@ -25,38 +25,41 @@ Type "N" for chromecast support (unless you plan to use a chromecast w/RasTor) <
 sudo systemctl unmask hostapd <br>
 sudo systemctl enable hostapd <br>
 sudo systemctl start hostapd <br>
-**REBOOT**
-Now you can test your wifi
-Connect to RPi-Wireless and test the connection. RPi must work like wireless point
-**Install TOR Service**
-sudo apt-get install tor
-sudo nano /etc/tor/torrc
-**Add this lines after the first paragraph**
-Log notice file /var/log/tor/notices.log
-VirtualAddrNetwork 10.192.0.0/10
-AutomapHostsSuffixes .onion,.exit
-AutomapHostsOnResolve 1
-TransPort 192.168.42.1:9040
-TransListenAddress 192.168.42.1
-DNSPort 192.168.42.1:53
-DNSListenAddress 192.168.42.1
-**Configure iptables**
-sudo iptables -F && sudo iptables -t nat -F <br>
+**REBOOT**<br>
+Now you can test your wifi<br>
+Connect to RPi-Wireless and test the connection. RPi must work like wireless point<br>
+**Install TOR Service**<br>
+sudo apt-get install tor<br>
+sudo nano /etc/tor/torrc<br>
+**Add this lines after the first paragraph**<br>
+Log notice file /var/log/tor/notices.log<br>
+VirtualAddrNetwork 10.192.0.0/10<br>
+AutomapHostsSuffixes .onion,.exit<br>
+AutomapHostsOnResolve 1<br>
+TransPort 192.168.42.1:9040<br>
+TransListenAddress 192.168.42.1<br>
+DNSPort 192.168.42.1:53<br>
+DNSListenAddress 192.168.42.1<br>
+<br>
+**Configure iptables**<br>
+sudo iptables -F && sudo iptables -t nat -F <br><br>
 sudo iptables -t nat -A PREROUTING -i wlan0 -p udp --dport 53 -j REDIRECT --to-ports 53 <br>
 sudo iptables -t nat -A PREROUTING -i wlan0 -p tcp --syn -j REDIRECT --to-ports 9040 <br>
-**Check iptables**
-sudo iptables -t nat -L
-sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
-**Create log file (If you need)**
+<br>
+**Check iptables**<br>
+sudo iptables -t nat -L<br>
+sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"<br>
+**Create log file (If you need)**<br>
 sudo touch /var/log/tor/notices.log <br>
 sudo chown debian-tor /var/log/tor/notices.log && sudo chmod 644 /var/log/tor/notices.log <br>
-**Start TOR service**
-sudo service tor start
-**Check to see if the service is running:**
-sudo service tor status
-**Run TOR Service at Boot:**
-sudo update-rc.d tor enable
-**REBOOT**
-sudo reboot
-
-That`s all! Connect to wireless of your RPi and check your ip with 2ip.ua
+**Start TOR service**<br>
+sudo service tor start<br>
+**Check to see if the service is running:**<br>
+sudo service tor status<br>
+**Run TOR Service at Boot:**<br>
+sudo update-rc.d tor enable<br>
+**REBOOT**<br>
+sudo reboot<br>
+<br>
+That`s all! Connect to wireless of your RPi and check your ip with 2ip.ua<br>
+<br><br>
