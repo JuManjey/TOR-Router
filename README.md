@@ -7,7 +7,7 @@ https://www.raspberrypi.com/software/ <br>
 **4. First - Update** <br>
 ```sudo apt-get update && sudo apt-get upgrade && sudo apt-get install git``` <br>
 **5.Change the default password** <br>
-passwd pi <br>
+```passwd pi ```<br>
 **6. Setup Wireless** <br>
 ```git clone https://github.com/unixabg/RPI-Wireless-Hotspot.git``` <br>
 ```cd RPI-Wireless-Hotspot ```<br>
